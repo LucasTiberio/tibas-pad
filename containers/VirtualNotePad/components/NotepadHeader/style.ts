@@ -5,9 +5,17 @@ export const ShadowBackground = styled.div`
   background: rgb(226, 226, 226);
   background: linear-gradient(
     180deg,
-    rgba(226, 226, 226, 1) 0%,
-    transparent 90%
+    rgba(226, 226, 226, 1) 10%,
+    transparent 100%
   );
+
+  @media screen and (max-width: 768px) {
+    background: linear-gradient(
+      180deg,
+      rgba(226, 226, 226, 1) 0%,
+      transparent 100%
+    );
+  }
 `
 
 const HeaderWrapperCss = css`
