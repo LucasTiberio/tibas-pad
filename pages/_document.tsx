@@ -9,7 +9,7 @@ class MyDocument extends Document {
           <link rel="icon" href="/favicon.ico" />
 
           <link rel="manifest" href="/manifest.json" />
-          <link rel="apple-touch-icon" href="/logo.png" />
+          <link rel="apple-touch-icon" href="/logo-coruja.png" />
           <meta name="theme-color" content="#999" />
 
           <link rel="preconnect" href="https://fonts.googleapis.com" />
