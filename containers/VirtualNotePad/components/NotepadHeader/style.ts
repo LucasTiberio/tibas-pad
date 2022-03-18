@@ -41,6 +41,10 @@ export const Container = styled.div`
 
   margin: 0 auto;
   height: ${() => NOTEPAD_HEADER_HEIGHT};
+
+  @media screen and (max-width: 768px) {
+    justify-content: center;
+  }
 `
 
 export const FixedLayout = styled.div`
