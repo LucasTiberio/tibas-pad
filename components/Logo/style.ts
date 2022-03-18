@@ -13,4 +13,6 @@ export const ImageContainer = styled.div<iLogo>`
     filter: fliph; /*IE*/
     `}
   transition: all 0.2s linear;
+
+  mix-blend-mode: multiply;
 `
