@@ -5,7 +5,7 @@ import { ImageContainer } from './style'
 const Logo = ({ isLoading }: iLogo): JSX.Element => {
   return (
     <ImageContainer isLoading={isLoading}>
-      <Image alt="Tibas Logo" src="/logo.png" width={54} height={54} />
+      <Image alt="Tibas Logo" src="/logo-coruja.png" width={54} height={54} />
     </ImageContainer>
   )
 }

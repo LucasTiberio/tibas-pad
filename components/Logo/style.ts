@@ -5,10 +5,12 @@ export const ImageContainer = styled.div<iLogo>`
   ${({ isLoading }) =>
     isLoading &&
     `
-    -webkit-transform: rotate(1080deg);
-    -webkit-transition-duration: 3.5s;
-    -webkit-transition-delay: now;
-    -webkit-animation-timing-function: linear;
-    -webkit-animation-iteration-count: infinite;
-  `}
+    -moz-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    transform: scaleX(-1);
+    -ms-filter: fliph; /*IE*/
+    filter: fliph; /*IE*/
+    `}
+  transition: all 0.2s linear;
 `

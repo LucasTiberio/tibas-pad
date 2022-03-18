@@ -21,7 +21,7 @@ const NotepadHeader: React.FC = () => {
             <Logo isLoading={loadingSetNotepad || loadingGetNotepad} />
           </HeaderTitleWrapper>
 
-          <HeaderContentWrapper>Note taking</HeaderContentWrapper>
+          <HeaderContentWrapper>Bloco de Notas</HeaderContentWrapper>
         </Container>
       </ShadowBackground>
     </FixedLayout>
