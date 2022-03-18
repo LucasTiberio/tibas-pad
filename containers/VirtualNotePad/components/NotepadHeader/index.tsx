@@ -11,14 +11,14 @@ import {
 export const NOTEPAD_HEADER_HEIGHT = '122px'
 
 const NotepadHeader: React.FC = () => {
-  const { loadingSetNotepad } = useNotepadContext()
+  const { loadingSetNotepad, loadingGetNotepad } = useNotepadContext()
 
   return (
     <FixedLayout>
       <ShadowBackground>
         <Container>
           <HeaderTitleWrapper>
-            <Logo isLoading={loadingSetNotepad} />
+            <Logo isLoading={loadingSetNotepad || loadingGetNotepad} />
           </HeaderTitleWrapper>
 
           <HeaderContentWrapper>Note taking</HeaderContentWrapper>

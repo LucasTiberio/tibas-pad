@@ -9,12 +9,15 @@ export const useNotepadContext = (): NotepadContextType =>
 
 const NotepadContextProvider: React.FC = ({ children }) => {
   const [loadingSetNotepad, setLoadingSetNotepad] = useState<boolean>(false)
+  const [loadingGetNotepad, setLoadingGetNotepad] = useState<boolean>(false)
 
   return (
     <NotepadContext.Provider
       value={{
         loadingSetNotepad,
         setLoadingSetNotepad,
+        loadingGetNotepad,
+        setLoadingGetNotepad,
       }}
     >
       {children}
