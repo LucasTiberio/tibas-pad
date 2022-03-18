@@ -12,18 +12,24 @@ export const ShadowBackground = styled.div`
 
 const HeaderWrapperCss = css`
   padding: 0 64px;
+
+  @media screen and (max-width: 768px) {
+    padding: 20px 0 0 20px;
+  }
 `
 
 export const HeaderTitleWrapper = styled.div`
   ${HeaderWrapperCss};
-
-  font-size: 32px;
 `
 
 export const HeaderContentWrapper = styled.div`
   ${HeaderWrapperCss};
 
-  font-size: 28px;
+  font-size: 32px;
+
+  @media screen and (max-width: 768px) {
+    font-size: 20px;
+  }
 `
 
 export const Container = styled.div`
