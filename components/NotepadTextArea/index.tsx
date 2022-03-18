@@ -23,7 +23,7 @@ const NotepadTextArea = (): JSX.Element => {
   return (
     <TextAreaContainer>
       <Textarea
-        value={textAreaValue}
+        defaultValue={textAreaValue ? textAreaValue : undefined}
         onChange={(e) => {
           handleTextAreaChange(e.target.value)
         }}
