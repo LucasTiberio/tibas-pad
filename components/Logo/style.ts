@@ -2,8 +2,6 @@ import styled from 'styled-components'
 import { iLogo } from './interface'
 
 export const ImageContainer = styled.div<iLogo>`
-  line-height: 100px;
-
   ${({ isLoading }) =>
     isLoading &&
     `

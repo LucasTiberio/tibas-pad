@@ -28,7 +28,7 @@ export const HeaderContentWrapper = styled.div`
   font-size: 32px;
 
   @media screen and (max-width: 768px) {
-    font-size: 20px;
+    display: none;
   }
 `
 
