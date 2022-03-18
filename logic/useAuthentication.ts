@@ -1,5 +1,5 @@
 import moment from 'moment'
-import { LOCAL_STORAGE_KEYS } from '../interfaces/api/next/localStorageKeys'
+import { COOKIE_KEYS } from '../interfaces/api/next/cookieKeys'
 import cookie from 'js-cookie'
 import { useMemo } from 'react'
 
@@ -20,20 +20,16 @@ const useAuthentication = () => {
     }
 
     const valueToLocalStorageStringified = JSON.stringify(valueToLocalStorage)
-    cookie.set(
-      LOCAL_STORAGE_KEYS.AUTHENTICATION,
-      valueToLocalStorageStringified
-    )
+    cookie.set(COOKIE_KEYS.AUTHENTICATION, valueToLocalStorageStringified)
     window.location.reload()
   }
 
   const resetAuthenticationLocalStorage = () => {
-    cookie.remove(LOCAL_STORAGE_KEYS.AUTHENTICATION)
+    cookie.remove(COOKIE_KEYS.AUTHENTICATION)
   }
 
   const isAuthenticated = useMemo(() => {
-    const cookieValue =
-      cookie.get(LOCAL_STORAGE_KEYS.AUTHENTICATION) || undefined
+    const cookieValue = cookie.get(COOKIE_KEYS.AUTHENTICATION) || undefined
     if (!cookieValue) return false
 
     const valueParsed: iLocalStorageAuthentication = JSON.parse(

@@ -1,7 +1,8 @@
 import axios from 'axios'
+import { API_ENDPOINT } from '../commons/consts'
 
 const instance = axios.create({
-  baseURL: 'http://localhost:3000/api',
+  baseURL: API_ENDPOINT,
   timeout: 1000,
   headers: { 'X-Custom-Header': 'foobar' },
 })

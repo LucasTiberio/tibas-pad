@@ -1,10 +1,10 @@
 import mongoose from 'mongoose'
-const MONGODB_URI =
-  'mongodb+srv://tibas-labs:19062803@cluster0.pl4ql.mongodb.net/tibas-pad?retryWrites=true&w=majority'
+import { MONGO_URI } from '../commons/consts'
+;('mongodb+srv://tibas-labs:19062803@cluster0.pl4ql.mongodb.net/tibas-pad?retryWrites=true&w=majority')
 
-if (!MONGODB_URI) {
+if (!MONGO_URI) {
   throw new Error(
-    'Please define the MONGODB_URI environment variable inside .env.local'
+    'Please define the MONGO_URI environment variable inside .env.local'
   )
 }
 
@@ -15,7 +15,7 @@ async function dbConnect() {
     bufferCommands: false,
   }
 
-  const connect = await mongoose.connect(MONGODB_URI, opts).then((mongoose) => {
+  const connect = await mongoose.connect(MONGO_URI, opts).then((mongoose) => {
     return mongoose
   })
   return connect
