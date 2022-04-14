@@ -22,7 +22,8 @@ export const ActionButtonDefaultCss = css<{
   font-size: 16px;
   color: #ddd;
 
-  visibility: ${({ show }) => (show !== undefined && show ? 'hidden' : 'show')};
+  visibility: ${({ show }) =>
+    show !== undefined && show ? 'hidden' : 'visible'};
 
   cursor: pointer;
 
