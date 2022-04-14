@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import dbConnect from '../../lib/mongooseConnect'
+import dbConnect from '../../src/lib/mongooseConnect'
 import getNotepad from './services/get-notepad'
 import setNotepad from './services/set-notepad'
 
@@ -8,8 +8,10 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const { method } = req
-
   await dbConnect()
+  // await Pusher.connect()
+
+  // if (!pusherSubscription) pusherSubscription = Pusher.subscribe('tibas-labs')
 
   switch (method) {
     case 'GET':

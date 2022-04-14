@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import Notepad from '../../../models/Notepad'
+import Notepad from '../../../src/models/Notepad'
 
 const setNotepad = async (
   req: NextApiRequest,

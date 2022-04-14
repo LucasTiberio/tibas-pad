@@ -1,7 +1,7 @@
-import '../styles/globals.css'
+import '../src/styles/globals.css'
 import type { AppProps } from 'next/app'
-import useAuthentication from '../logic/useAuthentication'
 import { useEffect } from 'react'
+import useAuthentication from '../src/logic/useAuthentication'
 
 function MyApp({ Component, pageProps }: AppProps) {
   const { isAuthenticated, setAuthenticationLocalStorage } = useAuthentication()
@@ -13,8 +13,13 @@ function MyApp({ Component, pageProps }: AppProps) {
     }
   }, [isAuthenticated, setAuthenticationLocalStorage])
 
+  // useEffect(() => {
+  //   if (!isAuthenticated) return
+  // }, [isAuthenticated])
+
   if (!isAuthenticated) return null
-  else return <Component {...pageProps} />
+
+  return <Component {...pageProps} />
 }
 
 export default MyApp

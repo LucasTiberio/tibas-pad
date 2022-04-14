@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import VirtualNotePad from '../containers/VirtualNotePad'
-import ContextsProvider from '../contexts/ContextsProvider'
+import VirtualNotePad from '../src/containers/VirtualNotePad'
+import ContextsProvider from '../src/contexts/ContextsProvider'
 
 const Home: NextPage = () => {
   return (

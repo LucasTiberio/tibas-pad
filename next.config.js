@@ -4,6 +4,7 @@ const withPWA = require('next-pwa')
 
 const nextConfig = {
   reactStrictMode: true,
+  // basePath: '/',
   compiler: {
     styledComponents: true,
   },
