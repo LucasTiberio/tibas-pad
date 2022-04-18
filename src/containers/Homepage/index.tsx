@@ -7,7 +7,8 @@ const Homepage = () => {
     <Container>
       <CenterWrapper>
         <Logo />
-        <h2>Tibas</h2>
+        <h2>Tibas Garden</h2>
+        presents
       </CenterWrapper>
 
       <NotepadEntryPointForm />
@@ -17,12 +18,12 @@ const Homepage = () => {
         <ul>Sem perder nada, Tibas onipresente</ul>
         <li>Tem auto-save, Tibas facilitou</li>
         <ul>Fonte singular, bem Tibinha</ul>
-        <li>Tibas Pad!</li>
+        <li>Tibas Pad ❤️</li>
       </Potentials>
 
-      <CenterWrapper>
-        <p>Tibas Co. ❤️</p>
-      </CenterWrapper>
+      {/* <CenterWrapper>
+        <p>Tibas Garden ❤️</p>
+      </CenterWrapper> */}
     </Container>
   );
 }
