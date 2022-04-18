@@ -7,6 +7,7 @@ export const Container = styled.div`
 `
 
 export const NotepadEntryPointInput = styled.input`
+  width: 100%;
   flex: 1;
 `
 
