@@ -2,13 +2,13 @@ import { useCallback, useEffect, useState } from 'react'
 import { useNotepadContext } from '../../contexts/notepad-context'
 import { useNotepadIALogic } from '../../logic/NotepadIA'
 import useDebounce from '../../logic/useDebounce'
-import sendPusherNotepad from '../../services/send-pusher-notepad'
+// import sendPusherNotepad from '../../services/send-pusher-notepad'
 import setNotepadText from '../../services/set-notepad-text'
 import { iUseNotepadTextAreaLogic } from './interface'
 
 const useNotepadTextAreaLogic = (): // params?: any,
-// refs?: React.RefObject<unknown>[]
-iUseNotepadTextAreaLogic => {
+  // refs?: React.RefObject<unknown>[]
+  iUseNotepadTextAreaLogic => {
   const [textAreaValue, setTextAreaValue] = useState('')
   const debounceTextAreaValue = useDebounce(textAreaValue, 1500)
   const { setLoadingSetNotepad } = useNotepadContext()
