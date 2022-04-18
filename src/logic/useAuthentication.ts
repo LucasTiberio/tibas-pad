@@ -5,20 +5,22 @@ import { useMemo } from 'react'
 
 interface iLocalStorageAuthentication {
   expiresAtIso: string
+  notepadName: string
   value: string
 }
 
-const useAuthentication = () => {
-  const setAuthenticationLocalStorage = (value: string) => {
-    const valueInBase64 = btoa(value)
+const useAuthentication = (notepadName?: string) => {
+  const setAuthenticationLocalStorage = (notepadName: string, keyValue: 'ok' | 'error') => {
+    const valueInBase64 = btoa(keyValue)
+    const notepadNameInBase64 = btoa(notepadName);
 
     const expiresAtIso = moment().add(15, 'm').toISOString()
 
     const valueToLocalStorage: iLocalStorageAuthentication = {
       expiresAtIso,
+      notepadName: notepadNameInBase64,
       value: valueInBase64,
     }
-
     const valueToLocalStorageStringified = JSON.stringify(valueToLocalStorage)
     cookie.set(COOKIE_KEYS.AUTHENTICATION, valueToLocalStorageStringified)
     window.location.reload()
@@ -36,13 +38,15 @@ const useAuthentication = () => {
       `${cookieValue}`
     )
 
+    if (notepadName && notepadName !== valueParsed.notepadName) return false;
+
     const storageExpiresAtMoment = moment(valueParsed.expiresAtIso)
 
     if (moment().isBefore(storageExpiresAtMoment)) return true
 
     resetAuthenticationLocalStorage()
     return false
-  }, [])
+  }, [notepadName])
 
   return {
     setAuthenticationLocalStorage,

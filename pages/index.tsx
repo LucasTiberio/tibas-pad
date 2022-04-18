@@ -1,3 +1,4 @@
+import Homepage from '../src/containers/Homepage'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 
@@ -9,7 +10,7 @@ const Home: NextPage = () => {
       </Head>
 
       <main>
-        <h1>Home</h1>
+        <Homepage />
       </main>
     </div>
   )
