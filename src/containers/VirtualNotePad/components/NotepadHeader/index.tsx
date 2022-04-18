@@ -1,3 +1,5 @@
+import { useRouter } from 'next/router'
+import { useMemo } from 'react'
 import Logo from '../../../../components/Logo'
 import { useNotepadContext } from '../../../../contexts/notepad-context'
 import {
@@ -11,6 +13,8 @@ import {
 export const NOTEPAD_HEADER_HEIGHT = '12vh'
 
 const NotepadHeader: React.FC = () => {
+  const { query } = useRouter();
+  const notepadSlug = useMemo(() => `${query?.slug}`, [query?.slug]);
   const { loadingSetNotepad, loadingGetNotepad } = useNotepadContext()
 
   return (
@@ -21,7 +25,7 @@ const NotepadHeader: React.FC = () => {
             <Logo isLoading={loadingSetNotepad || loadingGetNotepad} />
           </HeaderTitleWrapper>
 
-          <HeaderContentWrapper>Bloco de Notas</HeaderContentWrapper>
+          <HeaderContentWrapper>Bloco /{notepadSlug}</HeaderContentWrapper>
         </Container>
       </ShadowBackground>
     </FixedLayout>

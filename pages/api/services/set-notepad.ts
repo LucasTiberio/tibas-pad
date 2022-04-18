@@ -6,12 +6,14 @@ const setNotepad = async (
   res: NextApiResponse
 ): Promise<void | null> => {
   try {
-    const { name, content } = req.body
+    const { notepadName: name } = req.query;
+    const { content, protection } = req.body
     if (!name || !content) throw 'missing name or content in body'
 
     const newNotepad = {
       name,
       content,
+      protection,
     }
 
     const notepad = await Notepad.findOneAndUpdate(

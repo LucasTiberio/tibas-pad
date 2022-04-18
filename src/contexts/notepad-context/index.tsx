@@ -12,10 +12,13 @@ const NotepadContextProvider: React.FC = ({ children }) => {
   const [loadingGetNotepad, setLoadingGetNotepad] = useState(false)
   const [mobileOpenedActionButtons, setMobileOpenedActionButtons] =
     useState(false)
+  const [notepadProtection, setNotepadProtection] = useState('');
 
   return (
     <NotepadContext.Provider
       value={{
+        notepadProtection,
+        setNotepadProtection,
         loadingSetNotepad,
         setLoadingSetNotepad,
         loadingGetNotepad,

@@ -33,10 +33,10 @@ export const HeaderTitleWrapper = styled.div`
 export const HeaderContentWrapper = styled.div`
   ${HeaderWrapperCss};
 
-  font-size: 32px;
+  font-size: 24px;
 
   @media screen and (max-width: 768px) {
-    display: none;
+    /* display: none; */
   }
 `
 

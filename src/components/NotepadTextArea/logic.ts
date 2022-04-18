@@ -4,33 +4,32 @@ import { useNotepadIALogic } from '../../logic/NotepadIA'
 import useDebounce from '../../logic/useDebounce'
 // import sendPusherNotepad from '../../services/send-pusher-notepad'
 import setNotepadText from '../../services/set-notepad-text'
-import { iUseNotepadTextAreaLogic } from './interface'
+import { iUseNotepadTextAreaLogic, iUseNotepadTextAreaLogicRefs } from './interface'
 
-const useNotepadTextAreaLogic = (): // params?: any,
-  // refs?: React.RefObject<unknown>[]
-  iUseNotepadTextAreaLogic => {
+const useNotepadTextAreaLogic = (refs: iUseNotepadTextAreaLogicRefs): iUseNotepadTextAreaLogic => {
   const [textAreaValue, setTextAreaValue] = useState('')
   const debounceTextAreaValue = useDebounce(textAreaValue, 1500)
   const { setLoadingSetNotepad } = useNotepadContext()
   const { performIA, update } = useNotepadIALogic()
 
-  const setNotepadTextAtDB = useCallback(async () => {
+  const setNotepadTextAtDB = useCallback(async (notepadName: string) => {
     if (!debounceTextAreaValue) return
     setLoadingSetNotepad(true)
 
-    const _setNotepadTextAtDB = await setNotepadText(`${debounceTextAreaValue}`)
+    const _setNotepadTextAtDB = await setNotepadText(`${notepadName}`, {
+      content: `${debounceTextAreaValue}`,
+    })
 
     if (!_setNotepadTextAtDB) console.error('couldnt setnotepadtextatdb')
     setLoadingSetNotepad(false)
   }, [setLoadingSetNotepad, debounceTextAreaValue])
 
   useEffect(() => {
-    setNotepadTextAtDB()
+    if (refs?.notepadName) setNotepadTextAtDB(refs?.notepadName)
     // sendPusherNotepad(`${debounceTextAreaValue}`)
-  }, [debounceTextAreaValue, setNotepadTextAtDB])
+  }, [debounceTextAreaValue, setNotepadTextAtDB, refs?.notepadName])
 
   const handleTextAreaChange = async (textAreaChangeValue: string) => {
-    console.log('aquiii')
     const textAreaValueWithIAPerform = await performIA(textAreaChangeValue)
     setTextAreaValue(textAreaValueWithIAPerform)
   }

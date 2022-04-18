@@ -85,6 +85,7 @@ video {
   border: 0;
   vertical-align: baseline;
 }
+
 /* HTML5 display-role reset for older browsers */
 article,
 aside,
@@ -99,14 +100,17 @@ nav,
 section {
   display: block;
 }
+
 ol,
 ul {
   list-style: none;
 }
+
 blockquote,
 q {
   quotes: none;
 }
+
 blockquote:before,
 blockquote:after,
 q:before,
@@ -114,6 +118,7 @@ q:after {
   content: '';
   content: none;
 }
+
 table {
   border-collapse: collapse;
   border-spacing: 0;
@@ -131,11 +136,9 @@ body {
 
 body {
   background: rgb(226, 226, 226);
-  background: linear-gradient(
-    0deg,
-    rgba(226, 226, 226, 1) 0%,
-    rgba(255, 255, 255, 1) 15%
-  );
+  background: linear-gradient(0deg,
+      rgba(226, 226, 226, 1) 0%,
+      rgba(255, 255, 255, 1) 5%);
 }
 
 *::-webkit-scrollbar {

@@ -4,3 +4,7 @@ export interface iUseNotepadTextAreaLogic {
   handleTextAreaChange: (value: string) => void
   update: boolean
 }
+
+export interface iUseNotepadTextAreaLogicRefs {
+  notepadName?: string;
+}

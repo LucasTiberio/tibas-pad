@@ -3,6 +3,7 @@ import { GetResponse } from './common'
 export interface iNotepad {
   id?: string
   name: string
+  protection?: string;
   content: string
 }
 

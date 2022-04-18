@@ -16,7 +16,6 @@ const sendPusherNotepadNotification = async (
     // pusherSubscription?.trigger('client-tpad-notepad-change', {
     //   message: 'CHEGOU?',
     // })
-    console.log('aquizao 2')
 
     res.status(200).json({ success: true, data: newNotepad })
   } catch (error) {

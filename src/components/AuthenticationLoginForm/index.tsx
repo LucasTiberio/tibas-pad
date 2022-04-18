@@ -1,10 +1,11 @@
 import React, { useMemo, useState } from 'react'
-import { TPAD_PASSWORD } from '../../commons/consts'
+import { useNotepadContext } from '../../contexts/notepad-context'
 import useAuthentication from '../../logic/useAuthentication'
 import { arrayPermutation } from './helper'
 import { Container, GridWrapper, LoginOption, PasswordContainer } from './style'
 
 const AuthenticationLoginForm = () => {
+  const { notepadProtection } = useNotepadContext();
   const { setAuthenticationLocalStorage } = useAuthentication()
   const [password, setPassword] = useState<string[]>([])
 
@@ -22,13 +23,12 @@ const AuthenticationLoginForm = () => {
   }
 
   const handleSubmitLogin = () => {
-    if (password.length !== TPAD_PASSWORD.length) return setPassword([])
+    if (password.length !== notepadProtection?.length) return setPassword([])
 
     const passwordOptionsAreCorrect = password.reduce((prev, curr, index) => {
       if (prev === 'false') return prev
 
-      const passwordChar = TPAD_PASSWORD.charAt(index)
-      console.log({ passwordChar, curr })
+      const passwordChar = notepadProtection?.charAt(index)
       if (curr.includes(passwordChar)) return 'true'
       return 'false'
     }, 'true')
@@ -36,7 +36,8 @@ const AuthenticationLoginForm = () => {
     setPassword([])
     if (passwordOptionsAreCorrect === 'false') return
 
-    setAuthenticationLocalStorage('ok')
+    const base64password = atob(notepadProtection)
+    setAuthenticationLocalStorage(base64password)
   }
 
   return (

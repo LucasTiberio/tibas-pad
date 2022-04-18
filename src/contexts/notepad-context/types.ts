@@ -5,6 +5,8 @@ export type NotepadContextType = {
   setLoadingGetNotepad: (newLoadingGetNotepad: boolean) => void
   mobileOpenedActionButtons: boolean
   setMobileOpenedActionButtons: (newMobileOpenedActionButtons: boolean) => void
+  notepadProtection?: string;
+  setNotepadProtection: (newNotepadProtection: string) => void
 }
 
 export const dummyContext: NotepadContextType = {
@@ -14,4 +16,6 @@ export const dummyContext: NotepadContextType = {
   setLoadingGetNotepad: () => false,
   mobileOpenedActionButtons: false,
   setMobileOpenedActionButtons: () => false,
+  notepadProtection: '',
+  setNotepadProtection: () => false,
 }
