@@ -1,7 +1,6 @@
 import Homepage from '../src/containers/Homepage'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import GoogleAd from '../src/components/GoogleAd'
 
 const Home: NextPage = () => {
   return (
@@ -12,9 +11,6 @@ const Home: NextPage = () => {
 
       <main>
         <Homepage />
-        <GoogleAd
-          slot='6299240882'
-        />
       </main>
     </div>
   )
