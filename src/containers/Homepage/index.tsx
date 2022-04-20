@@ -1,5 +1,6 @@
 import Logo from "../../components/Logo";
 import NotepadEntryPointForm from "../../components/NotepadEntryPointForm";
+import StoragedNoteList from "../../components/StoragedNoteList";
 import { CenterWrapper, Container, Potentials } from "./style";
 
 const Homepage = () => {
@@ -20,6 +21,9 @@ const Homepage = () => {
         <ul>Fonte singular, bem Tibinha</ul>
         <li>Tibas Pad ❤️</li>
       </Potentials>
+
+      {/* CookieStoragedInBrowser */}
+      <StoragedNoteList />
 
       {/* <CenterWrapper>
         <p>Tibas Garden ❤️</p>

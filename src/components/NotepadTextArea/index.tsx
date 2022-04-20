@@ -9,7 +9,7 @@ import { useRouter } from 'next/router'
 
 const NotepadTextArea = (): JSX.Element => {
   const { query } = useRouter();
-  const notepadSlug = useMemo(() => `${query?.slug}`, [query?.slug]);
+  const notepadSlug = useMemo(() => query?.slug ? `${query?.slug}` : '', [query?.slug]);
   const { textAreaValue, setTextAreaValue, handleTextAreaChange } =
     useNotepadTextAreaLogic({
       notepadName: notepadSlug,

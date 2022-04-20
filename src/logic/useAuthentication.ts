@@ -1,13 +1,8 @@
 import moment from 'moment'
-import { COOKIE_KEYS } from '../interfaces/api/next/cookieKeys'
+import { COOKIE_KEYS } from '../interfaces/next/cookieKeys'
 import cookie from 'js-cookie'
 import { useMemo } from 'react'
-
-interface iLocalStorageAuthentication {
-  expiresAtIso: string
-  notepadName: string
-  value: string
-}
+import { iLocalStorageAuthentication } from '../interfaces/logics'
 
 const useAuthentication = (notepadName?: string) => {
   const setAuthenticationLocalStorage = (notepadName: string, keyValue: 'ok' | 'error') => {

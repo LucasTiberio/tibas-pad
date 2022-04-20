@@ -14,7 +14,7 @@ export const NOTEPAD_HEADER_HEIGHT = '12vh'
 
 const NotepadHeader: React.FC = () => {
   const { query } = useRouter();
-  const notepadSlug = useMemo(() => `${query?.slug}`, [query?.slug]);
+  const notepadSlug = useMemo(() => query?.slug ? `${query?.slug}` : '', [query?.slug]);
   const { loadingSetNotepad, loadingGetNotepad } = useNotepadContext()
 
   return (

@@ -7,7 +7,7 @@ import { Container, GridWrapper, LoginOption, PasswordContainer } from './style'
 
 const AuthenticationLoginForm = () => {
   const { query } = useRouter();
-  const notepadSlug = useMemo(() => `${query?.slug}`, [query?.slug]);
+  const notepadSlug = useMemo(() => query?.slug ? `${query?.slug}` : '', [query?.slug]);
   const { notepadProtection } = useNotepadContext();
   const { setAuthenticationLocalStorage } = useAuthentication(notepadSlug)
   const [password, setPassword] = useState<string[]>([])
