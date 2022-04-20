@@ -18,10 +18,8 @@ const VirtualNotePad: React.FC = () => {
   const { mobileOpenedActionButtons } = useNotepadContext()
 
   useEffect(() => {
-    console.log(hasOneNoteHistory(notepadSlug), notepadSlug)
     if (!!notepadSlug && !hasOneNoteHistory(notepadSlug)) {
       addNoteHistoryLocalStorage(notepadSlug, '');
-      console.log('atualizou aqui 1');
     }
   }, [hasOneNoteHistory, notepadSlug, addNoteHistoryLocalStorage])
 

@@ -3,3 +3,9 @@ export interface iNoteHistory {
   note_updated_at?: string;
   note_protection?: string;
 }
+
+export interface iLocalStorageAuthentication {
+  expiresAtIso: string;
+  notepadName: string;
+  value: string;
+}
