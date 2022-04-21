@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import dbConnect from '../../../src/lib/mongooseConnect'
-import getNotepad from '../services/get-notepad'
-import setNotepad from '../services/set-notepad'
+import dbConnect from '../../../src/backend/lib/mongooseConnect'
+import getNotepad from '../../../src/backend/services/get-notepad'
+import setNotepad from '../../../src/backend/services/set-notepad'
 
 export default async function handler(
   req: NextApiRequest,

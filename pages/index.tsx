@@ -1,4 +1,4 @@
-import Homepage from '../src/containers/Homepage'
+import Homepage from '../src/frontend/containers/Homepage'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 

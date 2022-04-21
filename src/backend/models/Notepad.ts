@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import { iNotepad } from '../interfaces/api/notepad'
+import { iNotepad } from '../../interfaces/api/notepad'
 
 const NotepadSchema = new mongoose.Schema(
   {

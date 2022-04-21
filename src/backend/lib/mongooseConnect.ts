@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
-import { MONGO_URI } from '../commons/consts'
-;('mongodb+srv://tibas-labs:19062803@cluster0.pl4ql.mongodb.net/tibas-pad?retryWrites=true&w=majority')
+import { MONGO_URI } from '../../commons/consts'
+  ; ('mongodb+srv://tibas-labs:19062803@cluster0.pl4ql.mongodb.net/tibas-pad?retryWrites=true&w=majority')
 
 if (!MONGO_URI) {
   throw new Error(

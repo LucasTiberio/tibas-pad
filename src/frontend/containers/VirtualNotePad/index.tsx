@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 import { useEffect, useMemo } from 'react'
 import TextAreaActions from '../../components/TextAreaActions'
 import { useNotepadContext } from '../../contexts/notepad-context'
-import useNoteHistory from '../../logic/useNoteHistory'
+import useNoteHistory from '../../logic/NoteHistory/useNoteHistory'
 import NotepadHeader from './components/NotepadHeader'
 import NoteTaking from './components/NoteTaking'
 import {
@@ -14,14 +14,14 @@ import {
 const VirtualNotePad: React.FC = () => {
   const { query } = useRouter();
   const notepadSlug = useMemo(() => query?.slug ? `${query?.slug}` : '', [query?.slug]);
-  const { hasOneNoteHistory, addNoteHistoryLocalStorage } = useNoteHistory();
+  const { hasOneNoteHistory, addNoteHistoryCookie } = useNoteHistory();
   const { mobileOpenedActionButtons } = useNotepadContext()
 
   useEffect(() => {
     if (!!notepadSlug && !hasOneNoteHistory(notepadSlug)) {
-      addNoteHistoryLocalStorage(notepadSlug, '');
+      addNoteHistoryCookie(notepadSlug, '');
     }
-  }, [hasOneNoteHistory, notepadSlug, addNoteHistoryLocalStorage])
+  }, [hasOneNoteHistory, notepadSlug, addNoteHistoryCookie])
 
   return (
     <VirtualNotePadContainer>

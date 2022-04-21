@@ -1,4 +1,4 @@
-import { GetNotepadResponse } from '../interfaces/api/notepad'
+import { GetNotepadResponse } from '../../interfaces/api/notepad'
 import instance from './api'
 import { SERVICE_ROUTES } from './enums'
 

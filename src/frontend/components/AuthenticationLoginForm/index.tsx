@@ -9,7 +9,7 @@ const AuthenticationLoginForm = () => {
   const { query } = useRouter();
   const notepadSlug = useMemo(() => query?.slug ? `${query?.slug}` : '', [query?.slug]);
   const { notepadProtection } = useNotepadContext();
-  const { setAuthenticationLocalStorage } = useAuthentication(notepadSlug)
+  const { setAuthenticationCookie } = useAuthentication(notepadSlug)
   const [password, setPassword] = useState<string[]>([])
 
   const generatedLoginOptions = useMemo(() => {
@@ -39,7 +39,7 @@ const AuthenticationLoginForm = () => {
     setPassword([])
     if (passwordOptionsAreCorrect === 'false') return
 
-    setAuthenticationLocalStorage(notepadSlug, 'ok')
+    setAuthenticationCookie(notepadSlug, 'ok')
   }
 
   return (

@@ -1,4 +1,4 @@
-import { iNotepad } from '../interfaces/api/notepad'
+import { iNotepad } from '../../interfaces/api/notepad'
 import instance from './api'
 import { SERVICE_ROUTES } from './enums'
 import { SET_NOTEPAD_TEXT_RESPONSE } from './interface'

@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
-import { iNoteHistory } from "../../interfaces/logics";
-import useNoteHistory from "../../logic/useNoteHistory";
+import { iNoteHistory } from "../../../interfaces/logics";
+import useNoteHistory from "../../logic/NoteHistory/useNoteHistory";
 import StoragedNoteHistoryItem from "../StoragedNoteHistoryItem";
 import { iStoragedNoteList } from "./interface";
 import { BottomFixedWrapper, Container, NoteHistoryListWrapper, ToggleNoteHistoryListWrapper } from "./style";
@@ -9,12 +9,12 @@ const StoragedNoteList = ({
   type = 'COOKIES'
 }: iStoragedNoteList): JSX.Element | null => {
   const [openedList, setOpenedList] = useState(false);
-  const { getAllNoteHistoryLocalStorage } = useNoteHistory();
+  const { getAllNoteHistoryCookie } = useNoteHistory();
 
   const STORAGE_DATA_LIST_BY_TYPE: iNoteHistory[] = useMemo(() => ({
-    COOKIES: getAllNoteHistoryLocalStorage(),
+    COOKIES: getAllNoteHistoryCookie(),
     USERNAME_DB: [],
-  }[type]), [type, getAllNoteHistoryLocalStorage])
+  }[type]), [type, getAllNoteHistoryCookie])
 
   if (!STORAGE_DATA_LIST_BY_TYPE.length) return null
 

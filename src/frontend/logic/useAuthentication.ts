@@ -1,27 +1,27 @@
 import moment from 'moment'
-import { COOKIE_KEYS } from '../interfaces/next/cookieKeys'
+import { COOKIE_KEYS } from '../../interfaces/next/cookieKeys'
 import cookie from 'js-cookie'
 import { useMemo } from 'react'
-import { iLocalStorageAuthentication } from '../interfaces/logics'
+import { iAuthentication } from '../../interfaces/logics'
 
 const useAuthentication = (notepadName?: string) => {
-  const setAuthenticationLocalStorage = (notepadName: string, keyValue: 'ok' | 'error') => {
+  const setAuthenticationCookie = (notepadName: string, keyValue: 'ok' | 'error') => {
     const valueInBase64 = btoa(keyValue)
     const notepadNameInBase64 = btoa(notepadName);
 
     const expiresAtIso = moment().add(15, 'm').toISOString()
 
-    const valueToLocalStorage: iLocalStorageAuthentication = {
+    const valueToCookie: iAuthentication = {
       expiresAtIso,
       notepadName: notepadNameInBase64,
       value: valueInBase64,
     }
-    const valueToLocalStorageStringified = JSON.stringify(valueToLocalStorage)
-    cookie.set(COOKIE_KEYS.AUTHENTICATION, valueToLocalStorageStringified)
+    const valueToCookieStringified = JSON.stringify(valueToCookie)
+    cookie.set(COOKIE_KEYS.AUTHENTICATION, valueToCookieStringified)
     window.location.reload()
   }
 
-  const resetAuthenticationLocalStorage = () => {
+  const resetAuthenticationCookie = () => {
     cookie.remove(COOKIE_KEYS.AUTHENTICATION)
   }
 
@@ -29,7 +29,7 @@ const useAuthentication = (notepadName?: string) => {
     const cookieValue = cookie.get(COOKIE_KEYS.AUTHENTICATION) || undefined
     if (!cookieValue) return false
 
-    const valueParsed: iLocalStorageAuthentication = JSON.parse(
+    const valueParsed: iAuthentication = JSON.parse(
       `${cookieValue}`
     )
 
@@ -39,13 +39,13 @@ const useAuthentication = (notepadName?: string) => {
 
     if (moment().isBefore(storageExpiresAtMoment)) return true
 
-    resetAuthenticationLocalStorage()
+    resetAuthenticationCookie()
     return false
   }, [notepadName])
 
   return {
-    setAuthenticationLocalStorage,
-    resetAuthenticationLocalStorage,
+    setAuthenticationCookie,
+    resetAuthenticationCookie,
     isAuthenticated,
   }
 }
