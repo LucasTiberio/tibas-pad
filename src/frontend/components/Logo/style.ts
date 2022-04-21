@@ -1,24 +1,7 @@
-import styled, { css } from 'styled-components'
-import { iLogo } from './interface'
+import styled from 'styled-components'
 
-const animation = css`
-  -moz-transform: scaleX(-1);
-  -webkit-transform: scaleX(-1);
-  -o-transform: scaleX(-1);
-  transform: scaleX(-1);
-
-  -ms-filter: fliph; /*IE*/
-  filter: fliph; /*IE*/
-`
-
-export const ImageContainer = styled.div<iLogo>`
-  ${({ isLoading }) => isLoading && animation}
-
-  &:hover {
-    ${animation};
+export const ImageContainer = styled.div`
+  img {
+    border-radius: 100%;
   }
-
-  transition: all 0.2s linear;
-  mix-blend-mode: multiply;
-  padding: 8px;
 `
