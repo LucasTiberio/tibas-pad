@@ -1,14 +1,17 @@
 import styled, { css } from 'styled-components'
 
-export const ACTION_BUTTON_SIZE = '42px'
+export const ACTION_BUTTON_SIZE = '36px'
 
 export const ActionButtonDefaultCss = css<{
   show?: boolean
   mobileOnly?: boolean
 }>`
   width: ${({ show }) =>
+    show !== undefined && show ? '0px' : 'auto'};
+  min-width: ${({ show }) =>
     show !== undefined && show ? '0px' : ACTION_BUTTON_SIZE};
-  height: ${() => ACTION_BUTTON_SIZE};
+  
+  max-height: ${() => ACTION_BUTTON_SIZE};
 
   display: flex;
   align-items: center;
@@ -18,7 +21,7 @@ export const ActionButtonDefaultCss = css<{
   border: none;
 
   background: rgba(51, 51, 51, 0.7);
-
+  
   font-size: 16px;
   color: #ddd;
 
@@ -36,6 +39,8 @@ export const ActionButton = styled.button`
   ${ActionButtonDefaultCss}
 
   border-right: 2px solid rgba(51, 51, 51, 0.3);
+
+  padding: 8px;
 
   &:hover {
     background: rgba(51, 51, 51, 0.8);

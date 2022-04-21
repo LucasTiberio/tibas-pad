@@ -1,11 +1,15 @@
+import { useRouter } from 'next/router'
 import React from 'react'
 import { useNotepadContext } from '../../contexts/notepad-context'
 import TextAreaActionButton from '../TextAreaActionButton'
 import { Container } from './style'
 
 const TextAreaActions = (): JSX.Element => {
+  const router = useRouter();
   const { setMobileOpenedActionButtons, mobileOpenedActionButtons } =
     useNotepadContext()
+
+  const handleGoToHomepage = () => router.push('/')
 
   const handleCloseMobileActionButtons = () =>
     setMobileOpenedActionButtons(false)
@@ -19,6 +23,8 @@ const TextAreaActions = (): JSX.Element => {
         show={mobileOpenedActionButtons}
         mobileOnly
       />
+
+      <TextAreaActionButton name={`<| Voltar`} onClick={handleGoToHomepage} />
 
       <TextAreaActionButton name="B" cmd="bold" />
 
