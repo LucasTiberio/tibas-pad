@@ -9,6 +9,7 @@ export const WritableDiv = styled(ContentEditable)`
   outline: 0;
 
   /* white-space: pre; */
+  line-height: 20px;
   font-family: 'Fira Code', sans-serif;
   resize: none;
 

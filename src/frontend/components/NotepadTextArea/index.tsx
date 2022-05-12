@@ -9,17 +9,17 @@ import { useRouter } from 'next/router'
 
 const NotepadTextArea = (): JSX.Element => {
   const { query } = useRouter();
+  const { setLoadingGetNotepad, loadingGetNotepad, setNotepadProtection } = useNotepadContext()
   const notepadSlug = useMemo(() => query?.slug ? `${query?.slug}` : '', [query?.slug]);
+
   const { textAreaValue, setTextAreaValue, handleTextAreaChange } =
     useNotepadTextAreaLogic({
       notepadName: notepadSlug,
     })
-  const { setLoadingGetNotepad, setNotepadProtection } = useNotepadContext()
 
   useEffect(() => {
     (async () => {
       setLoadingGetNotepad(true)
-
 
       const notepad = await getNotepadText(notepadSlug || 'main')
       if (notepad?.data?.content) setTextAreaValue(notepad?.data?.content)
@@ -32,9 +32,9 @@ const NotepadTextArea = (): JSX.Element => {
   return (
     <React.Fragment>
       <WritableDiv
-        html={textAreaValue} // innerHTML of the editable div
-        // disabled={!this.state.editable} // use true to disable edition
-        // onBlur={this.sanitize}
+        html={textAreaValue}
+        spellCheck={false}
+        disabled={loadingGetNotepad}
         onChange={(e) => {
           handleTextAreaChange(e.target.value)
         }}
