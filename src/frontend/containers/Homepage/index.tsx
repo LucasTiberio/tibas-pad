@@ -16,8 +16,8 @@ const Homepage = () => {
 
       <Potentials>
         <li>Sem login, só Tibas</li>
-        <ul>Sem perder nada, Tibas onipresente</ul>
         <li>Tem auto-save, Tibas facilitou</li>
+        <ul>Em todas plataformas, Tibas onipresente</ul>
         <ul>Fonte singular, bem Tibinha</ul>
         <li>Tibas Pad ❤️</li>
       </Potentials>

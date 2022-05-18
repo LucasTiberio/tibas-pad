@@ -8,13 +8,13 @@ import { BottomFixedWrapper, Container, NoteHistoryListWrapper, ToggleNoteHistor
 const StoragedNoteList = ({
   type = 'COOKIES'
 }: iStoragedNoteList): JSX.Element | null => {
-  const [openedList, setOpenedList] = useState(false);
-  const { getAllNoteHistoryCookie } = useNoteHistory();
+  const [openedList, setOpenedList] = useState(true);
+  const { getAllNoteHistory } = useNoteHistory();
 
   const STORAGE_DATA_LIST_BY_TYPE: iNoteHistory[] = useMemo(() => ({
-    COOKIES: getAllNoteHistoryCookie(),
+    COOKIES: getAllNoteHistory || [],
     USERNAME_DB: [],
-  }[type]), [type, getAllNoteHistoryCookie])
+  }[type]), [type, getAllNoteHistory])
 
   if (!STORAGE_DATA_LIST_BY_TYPE.length) return null
 

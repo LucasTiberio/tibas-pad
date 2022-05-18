@@ -18,12 +18,18 @@ export const Container = styled.div`
   cursor: pointer;
 `
 
-export const Wrapper = styled.div<{ flex?: number }>`
+export const NoteInformationsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4px;
 
-  flex: ${({ flex }) => flex || 0};
+  flex: 1;
+`
+
+export const ActionsWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: flex;
 `
 
 export const NoteName = styled.span`
@@ -36,4 +42,14 @@ export const NoteUpdatedAt = styled.span`
   font-weight: 300;
 `
 
-export const NoteGoButton = styled.div``
+export const NoteGoButton = styled.div`
+  font-weight: bold;
+`
+
+export const NoteDeleteButton = styled.div`
+  color: red;
+
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 5px 16px;
+`

@@ -19,6 +19,10 @@ export const WritableDiv = styled(ContentEditable)`
   }
 
   // Iphone X, Iphone XS, Iphone XR
+  @media screen and (max-width: 768px) {
+    font-size: 0.9rem;
+  }
+
   @media screen and (max-height: 896px) {
   }
 

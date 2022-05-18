@@ -24,6 +24,7 @@ const NotepadTextArea = (): JSX.Element => {
       const notepad = await getNotepadText(notepadSlug || 'main')
       if (notepad?.data?.content) setTextAreaValue(notepad?.data?.content)
       if (notepad?.data?.protection) setNotepadProtection(notepad?.data?.protection)
+      else setNotepadProtection('')
 
       setLoadingGetNotepad(false)
     })()

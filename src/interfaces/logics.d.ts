@@ -15,10 +15,11 @@ export interface iAuthentication {
 export type iUserNoteTabs = string[]
 
 export interface iUseNoteHistory {
-  getAllNoteHistoryCookie: () => iCookieNoteHistory[];
-  getOneNoteHistoryCookie: (name: string) => iCookieNoteHistory | undefined
-  removeNoteHistoryCookie: (name: string) => void;
-  resetNoteHistoryCookie: () => void;
-  addNoteHistoryCookie: (name: string, updated_at: string, protection?: string) => void;
-  hasOneNoteHistory: (noteHistoryName: string) => boolean;
+  getAllNoteHistory: iCookieNoteHistory[];
+  getOneNoteHistory: (name: string) => iCookieNoteHistory | undefined
+  removeNoteHistory: (name: string) => void;
+  resetNoteHistory: () => void;
+  addOrUpdateCookieNoteHistory: (name: string, updated_at: string, protection?: string) => void;
+  addNoteHistory: (name: string, updated_at: string, protection?: string) => void;
+  existsNoteHistory: (noteHistoryName: string) => boolean;
 }
