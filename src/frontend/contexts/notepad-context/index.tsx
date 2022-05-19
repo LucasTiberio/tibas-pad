@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useEffect, useState } from 'react'
 
 import { NotepadContextType, dummyContext } from './types'
 
@@ -13,10 +13,20 @@ const NotepadContextProvider: React.FC = ({ children }) => {
   const [mobileOpenedActionButtons, setMobileOpenedActionButtons] =
     useState(false)
   const [notepadProtection, setNotepadProtection] = useState('');
+  const [notepadTextValue, setNotepadTextValue] = useState('');
+  const [notepadSlug, setNotepadSlug] = useState('');
+
+  useEffect(() => {
+    setNotepadSlug(window.location.pathname.slice(1, 20))
+  }, [])
 
   return (
     <NotepadContext.Provider
       value={{
+        notepadSlug,
+        setNotepadSlug,
+        notepadTextValue,
+        setNotepadTextValue,
         notepadProtection,
         setNotepadProtection,
         loadingSetNotepad,

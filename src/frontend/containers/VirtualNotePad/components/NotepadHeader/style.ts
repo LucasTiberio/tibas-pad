@@ -20,10 +20,8 @@ export const ShadowBackground = styled.div`
 
 const HeaderWrapperCss = css`
   padding: 0 64px;
-
-  @media screen and (max-width: 768px) {
-    padding: 20px 0 0 20px;
-  }
+  display: flex;
+  align-items: center;
 `
 
 export const HeaderTitleWrapper = styled.div`
@@ -51,7 +49,8 @@ export const Container = styled.div`
   height: ${() => NOTEPAD_HEADER_HEIGHT};
 
   @media screen and (max-width: 768px) {
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
   }
 `
 
@@ -62,4 +61,11 @@ export const FixedLayout = styled.div`
   /* position: fixed;
   top: 0;
   left: 0; */
+`
+export const HeaderNoteHistorySelect = styled.select`
+  background: transparent;
+  border: none;
+  outline: none;
+  
+  cursor: pointer;
 `

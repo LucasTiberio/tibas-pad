@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router'
 import React, { useMemo, useState } from 'react'
 import { useNotepadContext } from '../../contexts/notepad-context'
 import useAuthentication from '../../logic/useAuthentication'
@@ -6,9 +5,7 @@ import { arrayPermutation } from './helper'
 import { Container, GridWrapper, LoginOption, PasswordContainer } from './style'
 
 const AuthenticationLoginForm = () => {
-  const { query } = useRouter();
-  const notepadSlug = useMemo(() => query?.slug ? `${query?.slug}` : '', [query?.slug]);
-  const { notepadProtection } = useNotepadContext();
+  const { notepadProtection, notepadSlug } = useNotepadContext();
   const { setAuthenticationCookie } = useAuthentication(notepadSlug)
   const [password, setPassword] = useState<string[]>([])
 
@@ -38,8 +35,7 @@ const AuthenticationLoginForm = () => {
 
     setPassword([])
     if (passwordOptionsAreCorrect === 'false') return
-
-    setAuthenticationCookie(notepadSlug, 'ok')
+    if (notepadSlug) setAuthenticationCookie(notepadSlug, 'ok')
   }
 
   return (

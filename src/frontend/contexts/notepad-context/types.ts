@@ -7,6 +7,10 @@ export type NotepadContextType = {
   setMobileOpenedActionButtons: (newMobileOpenedActionButtons: boolean) => void
   notepadProtection?: string;
   setNotepadProtection: (newNotepadProtection: string) => void
+  notepadSlug?: string;
+  setNotepadSlug: (newNotepadSlug: string) => void
+  notepadTextValue: string;
+  setNotepadTextValue: (newNotepadTextValue: string) => void
 }
 
 export const dummyContext: NotepadContextType = {
@@ -18,4 +22,8 @@ export const dummyContext: NotepadContextType = {
   setMobileOpenedActionButtons: () => false,
   notepadProtection: '',
   setNotepadProtection: () => false,
+  notepadSlug: '',
+  setNotepadSlug: () => false,
+  notepadTextValue: '',
+  setNotepadTextValue: () => false,
 }

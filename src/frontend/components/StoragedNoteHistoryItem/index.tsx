@@ -1,7 +1,7 @@
 import moment from "moment";
-import { useRouter } from "next/router";
 import { useMemo, useState } from "react";
 import useNoteHistory from "../../logic/NoteHistory/useNoteHistory";
+import useNoteNavigate from "../../logic/useNoteNavigate";
 import { iStoragedNoteHistoryItem } from "./interface";
 import { Container, NoteDeleteButton, NoteGoButton, NoteName, ActionsWrapper, NoteUpdatedAt, NoteInformationsWrapper } from "./style";
 
@@ -11,7 +11,7 @@ const StoragedNoteHistoryItem = ({
 }: iStoragedNoteHistoryItem): JSX.Element => {
   const { removeNoteHistory } = useNoteHistory()
   const [loading, setLoading] = useState(false);
-  const router = useRouter();
+  const { go } = useNoteNavigate()
 
   const updatedAtFormated = useMemo(() => {
     let _updatedAtFormated = ''
@@ -36,7 +36,7 @@ const StoragedNoteHistoryItem = ({
   const handleGoToNote = (): void => {
     if (loading) return
     setLoading(true)
-    router.push(`/${name}`)
+    go(name)
   };
 
   const handleDeleteNote = (): void => {

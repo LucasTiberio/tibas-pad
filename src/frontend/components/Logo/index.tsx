@@ -1,12 +1,16 @@
-import Image from 'next/image'
 import { useMemo, useState } from 'react'
 import { iLogo } from './interface'
-import { ImageContainer } from './style'
+import { ImageContainer, StyledImage } from './style'
 
 const OwlGifFirstFrame = '/images/owl-gif-first-frame.png'
 const OwlGif = '/images/owl-gif.gif'
 
-const Logo = ({ isLoading }: iLogo): JSX.Element => {
+const Logo = ({
+  isLoading,
+  height = 72,
+  width = 72,
+  size,
+}: iLogo): JSX.Element => {
   const [doingAnimation, setDoingAnimation] = useState(false);
 
   const imageSourceBasedOnLifecycle = useMemo(() => {
@@ -25,7 +29,14 @@ const Logo = ({ isLoading }: iLogo): JSX.Element => {
 
   return (
     <ImageContainer onMouseOver={handleImageContainerMouseOver}>
-      <Image alt="Tibas Logo" src={imageSourceBasedOnLifecycle} width={76} height={76} />
+      <StyledImage
+        alt="Tibas Logo"
+        src={imageSourceBasedOnLifecycle}
+        isLoading={isLoading}
+        height={height || 72}
+        width={width || 72}
+        size={size}
+      />
     </ImageContainer>
   )
 }

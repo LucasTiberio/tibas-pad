@@ -1,15 +1,14 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect } from 'react'
 import { useNotepadContext } from '../../contexts/notepad-context'
 import { useNotepadIALogic } from '../../logic/NotepadIA'
 import useDebounce from '../../logic/useDebounce'
 // import sendPusherNotepad from '../../services/send-pusher-notepad'
 import setNotepadText from '../../services/set-notepad-text'
-import { iUseNotepadTextAreaLogic, iUseNotepadTextAreaLogicRefs } from './interface'
+import { iUseNotepadTextAreaLogic } from './interface'
 
-const useNotepadTextAreaLogic = (refs: iUseNotepadTextAreaLogicRefs): iUseNotepadTextAreaLogic => {
-  const [textAreaValue, setTextAreaValue] = useState('')
-  const debounceTextAreaValue = useDebounce(textAreaValue, 1500)
-  const { setLoadingSetNotepad } = useNotepadContext()
+const useNotepadTextAreaLogic = (): iUseNotepadTextAreaLogic => {
+  const { setLoadingSetNotepad, loadingGetNotepad, notepadSlug, notepadTextValue, setNotepadTextValue } = useNotepadContext()
+  const debounceTextAreaValue = useDebounce(notepadTextValue, 1500)
   const { performIA, update } = useNotepadIALogic()
 
   const setNotepadTextAtDB = useCallback(async (notepadName: string) => {
@@ -22,21 +21,20 @@ const useNotepadTextAreaLogic = (refs: iUseNotepadTextAreaLogicRefs): iUseNotepa
 
     if (!_setNotepadTextAtDB) console.error('couldnt setnotepadtextatdb')
     setLoadingSetNotepad(false)
-  }, [setLoadingSetNotepad, debounceTextAreaValue])
+  }, [setLoadingSetNotepad, debounceTextAreaValue, notepadTextValue, notepadSlug])
 
   useEffect(() => {
-    if (refs?.notepadName) setNotepadTextAtDB(refs?.notepadName)
+    if (loadingGetNotepad) return;
+    if (notepadSlug) setNotepadTextAtDB(notepadSlug)
     // sendPusherNotepad(`${debounceTextAreaValue}`)
-  }, [debounceTextAreaValue, setNotepadTextAtDB, refs?.notepadName])
+  }, [debounceTextAreaValue, setNotepadTextAtDB, loadingGetNotepad, notepadSlug])
 
   const handleTextAreaChange = async (textAreaChangeValue: string) => {
     const textAreaValueWithIAPerform = await performIA(textAreaChangeValue)
-    setTextAreaValue(textAreaValueWithIAPerform)
+    setNotepadTextValue(textAreaValueWithIAPerform)
   }
 
   return {
-    textAreaValue,
-    setTextAreaValue,
     handleTextAreaChange,
     update,
   }

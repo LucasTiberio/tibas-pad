@@ -1,13 +1,13 @@
-import { useRouter } from "next/router";
 import { useState } from "react";
+import useNoteNavigate from "../../logic/useNoteNavigate";
 import { Container, NotepadEntryPointInput } from "./style";
 
 const NotepadEntryPointForm = () => {
   const [targetNotepadName, setTargetNotepadName] = useState('');
-  const router = useRouter();
+  const { go } = useNoteNavigate()
 
   const handleGoToTargetText = () => {
-    router.push(`/${targetNotepadName}`)
+    go(targetNotepadName)
   }
 
   const handleNotepadTargetNameChange = (evt: React.ChangeEvent<HTMLInputElement>) => {

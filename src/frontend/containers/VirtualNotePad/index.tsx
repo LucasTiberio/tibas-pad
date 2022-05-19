@@ -1,6 +1,5 @@
 import moment from 'moment'
-import { useRouter } from 'next/router'
-import { useEffect, useMemo } from 'react'
+import { useEffect } from 'react'
 import TextAreaActions from '../../components/TextAreaActions'
 import { useNotepadContext } from '../../contexts/notepad-context'
 import useNoteHistory from '../../logic/NoteHistory/useNoteHistory'
@@ -13,10 +12,8 @@ import {
 } from './style'
 
 const VirtualNotePad: React.FC = () => {
-  const { query } = useRouter();
-  const notepadSlug = useMemo(() => query?.slug ? `${query?.slug}` : '', [query?.slug]);
   const { existsNoteHistory, addOrUpdateCookieNoteHistory } = useNoteHistory();
-  const { mobileOpenedActionButtons, notepadProtection } = useNotepadContext()
+  const { mobileOpenedActionButtons, notepadProtection, notepadSlug } = useNotepadContext()
 
   useEffect(() => {
     if (!!notepadSlug) {

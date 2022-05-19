@@ -1,3 +1,6 @@
 export interface iLogo {
-  isLoading?: boolean
+  isLoading?: boolean;
+  size?: number;
+  width?: number;
+  height?: number;
 }

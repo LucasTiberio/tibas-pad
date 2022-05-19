@@ -15,8 +15,8 @@ export interface iAuthentication {
 export type iUserNoteTabs = string[]
 
 export interface iUseNoteHistory {
-  getAllNoteHistory: iCookieNoteHistory[];
-  getOneNoteHistory: (name: string) => iCookieNoteHistory | undefined
+  getAllNoteHistory: iNoteHistory[];
+  getOneNoteHistory: (name: string) => iNoteHistory | undefined
   removeNoteHistory: (name: string) => void;
   resetNoteHistory: () => void;
   addOrUpdateCookieNoteHistory: (name: string, updated_at: string, protection?: string) => void;

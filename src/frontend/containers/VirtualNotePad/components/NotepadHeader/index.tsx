@@ -1,21 +1,27 @@
-import { useRouter } from 'next/router'
-import { useMemo } from 'react'
 import Logo from '../../../../components/Logo'
 import { useNotepadContext } from '../../../../contexts/notepad-context'
+import useNoteHistory from '../../../../logic/NoteHistory/useNoteHistory'
+import useNoteNavigate from '../../../../logic/useNoteNavigate'
 import {
   Container,
   HeaderContentWrapper,
   HeaderTitleWrapper,
   ShadowBackground,
   FixedLayout,
+  HeaderNoteHistorySelect,
 } from './style'
 
-export const NOTEPAD_HEADER_HEIGHT = '12vh'
+export const NOTEPAD_HEADER_HEIGHT = '13vh'
 
 const NotepadHeader: React.FC = () => {
-  const { query } = useRouter();
-  const notepadSlug = useMemo(() => query?.slug ? `${query?.slug}` : '', [query?.slug]);
-  const { loadingSetNotepad, loadingGetNotepad } = useNotepadContext()
+  const { loadingSetNotepad, loadingGetNotepad, notepadSlug } = useNotepadContext()
+  const { getAllNoteHistory } = useNoteHistory();
+  const { go } = useNoteNavigate()
+
+  const handleSelectChangeNoteHistory = (evt: React.ChangeEvent<HTMLSelectElement>) => {
+    const { value } = evt.currentTarget;
+    go(value)
+  }
 
   return (
     <FixedLayout>
@@ -25,7 +31,19 @@ const NotepadHeader: React.FC = () => {
             <Logo isLoading={loadingSetNotepad || loadingGetNotepad} />
           </HeaderTitleWrapper>
 
-          <HeaderContentWrapper>Bloco /{notepadSlug}</HeaderContentWrapper>
+          <HeaderContentWrapper>
+            Bloco /{notepadSlug}
+            {/* <HeaderNoteHistorySelect value={notepadSlug} onChange={handleSelectChangeNoteHistory}>
+              {getAllNoteHistory.map(noteHistory =>
+                <option
+                  key={noteHistory.note_name}
+                  value={noteHistory.note_name}
+                >
+                  {noteHistory.note_name}
+                </option>
+              )}
+            </HeaderNoteHistorySelect> */}
+          </HeaderContentWrapper>
         </Container>
       </ShadowBackground>
     </FixedLayout>
