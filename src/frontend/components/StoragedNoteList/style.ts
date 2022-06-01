@@ -25,10 +25,12 @@ export const NoteHistoryListWrapper = styled.div<iStyled>`
 export const BottomFixedWrapper = styled.div<iStyled>`
   position: absolute;
 
-  top: ${({ opened }) => opened ? '100%' : '0px'};
+  top: ${({ opened }) => opened ? '110%' : '0px'};
   left: 50%;
   
   transform: translateX(-50%) ${({ opened }) => opened ? 'rotate(90deg)' : 'rotate(270deg)'};
+
+  transition: transform 0.2s ease;
 `
 
 export const ToggleNoteHistoryListWrapper = styled.div`

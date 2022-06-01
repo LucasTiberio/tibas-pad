@@ -17,7 +17,7 @@ export const WrapperNoteTaking = styled.div`
 export const FixedWrapperNoteTakingActions = styled.div<{ opened?: boolean }>`
   position: fixed;
   bottom: 20px;
-  left: 150px;
+  right: 50px;
 
   @media screen and (max-width: 768px) {
     left: ${({ opened }) =>

@@ -3,7 +3,7 @@ import { useMemo, useState } from "react";
 import useNoteHistory from "../../logic/NoteHistory/useNoteHistory";
 import useNoteNavigate from "../../logic/useNoteNavigate";
 import { iStoragedNoteHistoryItem } from "./interface";
-import { Container, NoteDeleteButton, NoteGoButton, NoteName, ActionsWrapper, NoteUpdatedAt, NoteInformationsWrapper } from "./style";
+import { Container, NoteDeleteButton, NoteName, ActionsWrapper, NoteUpdatedAt, NoteInformationsWrapper } from "./style";
 
 const StoragedNoteHistoryItem = ({
   name,
@@ -54,9 +54,6 @@ const StoragedNoteHistoryItem = ({
         <NoteDeleteButton onClick={handleDeleteNote}>
           {!loading && 'X'}
         </NoteDeleteButton>
-        <NoteGoButton onClick={handleGoToNote}>
-          {!loading && '||>'}
-        </NoteGoButton>
       </ActionsWrapper>
     </Container>
   )

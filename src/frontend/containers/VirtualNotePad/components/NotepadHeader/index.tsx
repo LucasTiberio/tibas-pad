@@ -11,7 +11,7 @@ import {
   HeaderNoteHistorySelect,
 } from './style'
 
-export const NOTEPAD_HEADER_HEIGHT = '13vh'
+export const NOTEPAD_HEADER_HEIGHT = '16vh'
 
 const NotepadHeader: React.FC = () => {
   const { loadingSetNotepad, loadingGetNotepad, notepadSlug } = useNotepadContext()

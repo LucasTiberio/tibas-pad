@@ -5,12 +5,12 @@ export const Container = styled.div`
   align-items: center;
 
   border-radius: 8px;
-  padding: 8px;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
 
-  box-shadow: 0px 8px 14px rgba(0, 0, 0, 0.1);
-  
+
   &:hover {
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.1);
   }
 
   transition: box-shadow 0.3s linear;
@@ -42,14 +42,9 @@ export const NoteUpdatedAt = styled.span`
   font-weight: 300;
 `
 
-export const NoteGoButton = styled.div`
-  font-weight: bold;
-`
-
 export const NoteDeleteButton = styled.div`
   color: red;
 
   font-size: 1.2rem;
   font-weight: bold;
-  padding: 5px 16px;
 `

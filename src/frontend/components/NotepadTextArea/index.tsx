@@ -23,7 +23,7 @@ const NotepadTextArea = (): JSX.Element => {
 
       setLoadingGetNotepad(false)
     })()
-  }, [])
+  }, [notepadSlug, setLoadingGetNotepad, setNotepadTextValue, setNotepadProtection])
 
   return (
     <React.Fragment>

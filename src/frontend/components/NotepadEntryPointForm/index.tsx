@@ -1,13 +1,17 @@
+import moment from "moment";
 import { useState } from "react";
+import useNoteHistory from "../../logic/NoteHistory/useNoteHistory";
 import useNoteNavigate from "../../logic/useNoteNavigate";
 import { Container, NotepadEntryPointInput } from "./style";
 
 const NotepadEntryPointForm = () => {
   const [targetNotepadName, setTargetNotepadName] = useState('');
   const { go } = useNoteNavigate()
+  const { addOrUpdateCookieNoteHistory } = useNoteHistory();
 
   const handleGoToTargetText = () => {
     go(targetNotepadName)
+    addOrUpdateCookieNoteHistory(targetNotepadName, moment().toISOString())
   }
 
   const handleNotepadTargetNameChange = (evt: React.ChangeEvent<HTMLInputElement>) => {

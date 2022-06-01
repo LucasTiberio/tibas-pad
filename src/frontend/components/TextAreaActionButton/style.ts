@@ -33,6 +33,8 @@ export const ActionButtonDefaultCss = css<{
   @media screen and (min-width: 769px) {
     display: ${({ mobileOnly }) => (mobileOnly ? 'none' : 'block')};
   }
+
+  transition: all 0.3s ease;
 `
 
 export const ActionButton = styled.button`

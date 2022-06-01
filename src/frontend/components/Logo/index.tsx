@@ -6,7 +6,7 @@ const OwlGifFirstFrame = '/images/owl-gif-first-frame.png'
 const OwlGif = '/images/owl-gif.gif'
 
 const Logo = ({
-  isLoading,
+  isLoading = false,
   height = 72,
   width = 72,
   size,
@@ -32,7 +32,7 @@ const Logo = ({
       <StyledImage
         alt="Tibas Logo"
         src={imageSourceBasedOnLifecycle}
-        isLoading={isLoading}
+        // isLoading={isLoading || false}
         height={height || 72}
         width={width || 72}
         size={size}
